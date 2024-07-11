@@ -1,4 +1,4 @@
-Planning for the application :
+<!-- Planning for the application :
     ->Auth
         ->login Form
         -> redirect to Browse Component
@@ -7,4 +7,4 @@ Planning for the application :
         ->Main Trailer Playing
             ->Trailer Playing BG
             -> Trailer name and desc
-        -> Movie List 
+        -> Movie List  -->
