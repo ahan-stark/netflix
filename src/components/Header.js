@@ -30,7 +30,6 @@ const Header = () => {
         // User is signed in,
         //always navigate to browse
         const { uid, email, displayName } = user;
-        console.log(user);
         navigate("/browse");
         dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
       } else {
@@ -47,7 +46,6 @@ const Header = () => {
         <div>
           <img className="pl-4" src={avatar} />
           <p className="text-yellow-300 px-3 py-1">{getUser}</p>
-          {console.log(getUser)}
           <button className=" mt-3 pr-9 text-red-600" onClick={handleSignout}>
             Sign Out
           </button>
