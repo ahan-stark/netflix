@@ -62,7 +62,6 @@ const Login = () => {
               // ...
             });
           navigate("/browse");
-          console.log(user);
           // ...
         })
         .catch((error) => {
@@ -82,7 +81,6 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           navigate("/browse");
-          console.log(user);
           // ...
         })
         .catch((error) => {
@@ -90,7 +88,6 @@ const Login = () => {
           const errorMessage = error.message;
           setValidateError("invalid name/password");
         });
-      console.log("sign up");
     }
   };
   return (
