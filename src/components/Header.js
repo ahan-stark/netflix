@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import avatar from "../assets/avatar.png";
 import { signOut } from "firebase/auth";
@@ -8,10 +8,15 @@ import { useSelector } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
+import { toggleShowSearchView } from "../utils/gptSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const showGPT = useSelector((store) => store.gpt.showGPTSearch);
+  const handleGPTsearchClick = () => {
+    dispatch(toggleShowSearchView());
+  };
   const getUser = useSelector((store) => {
     return store.user.user.displayName;
   });
@@ -43,10 +48,16 @@ const Header = () => {
     <div className="absolute w-full  px-8 py-5 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between">
       <img className="mx-auto md:mx-0 w-[15%] h-[10%]" src={logo} alt="logo" />
       {getUser && (
-        <div>
-          <img className="pl-4" src={avatar} />
-          <p className="text-yellow-300 px-3 py-1">{getUser}</p>
-          <button className=" mt-3 pr-9 text-red-600" onClick={handleSignout}>
+        <div className="flex">
+          <button
+            className="text-white mt-[5%] mr-40 w-[25%] h-[2em] bg-purple-600 rounded-xl"
+            onClick={handleGPTsearchClick}
+          >
+            {showGPT ? "home" : "search"}
+          </button>
+          <img className="w-14 h-12 -mr-12 -mt-1 rounded-xl" src={avatar} />
+          <p className="relative text-yellow-300 mt-12 mr-7">{getUser}</p>
+          <button className=" text-red-600 mb-6 mr-2 " onClick={handleSignout}>
             Sign Out
           </button>
         </div>
