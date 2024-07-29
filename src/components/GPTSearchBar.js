@@ -18,8 +18,10 @@ const GPTSearchBar = () => {
         Api_options
       );
       const searchmovieInJSON = await searchMovieAPI.json();
-      console.log(searchmovieInJSON.results.slice(0,5));
-      disPatch(addSearchMovieList(searchmovieInJSON.results.slice(0,5)));
+      console.log(searchmovieInJSON.results.slice(0, 5));
+      disPatch(addSearchMovieList(searchmovieInJSON.results.slice(0, 5)));
+    } else if (movieString.trim() === "") {
+      disPatch(addSearchMovieList([]));
     }
   };
   return (
@@ -45,7 +47,9 @@ const GPTSearchBar = () => {
           </button>
         </Form>
       </div>
-      <DisplaySearchmovie />
+      <div>
+        <DisplaySearchmovie />
+      </div>
     </div>
   );
 };
