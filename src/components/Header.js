@@ -46,11 +46,11 @@ const Header = () => {
   }, []);
   return (
     <div className="absolute w-full  px-8 py-5 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between">
-      <img className="mx-auto md:mx-0 w-[15%] h-[10%]" src={logo} alt="logo" />
+      <img className="mx-auto md:ml-3 w-44" src={logo} alt="logo" />
       {getUser && (
         <div className="flex">
           <button
-            className="text-white mt-[5%] mr-40 w-[25%] h-[2em] bg-purple-600 rounded-xl"
+            className="mt-[5%] mr-40 w-[25%] h-[2em] bg-purple-600 rounded-xl text-white"
             onClick={handleGPTsearchClick}
           >
             {showGPT ? "home" : "search"}

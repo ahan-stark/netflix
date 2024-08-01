@@ -1,18 +1,20 @@
 import React from "react";
 import GPTSearchBar from "./GPTSearchBar";
-import bg from "../assets/bg.jpg"
+import bg from "../assets/bg.jpg";
 
 const GPTsearch = () => {
   return (
-    <div>
-      <div className="absolute -z-20">
+
+      <div className="">
         <img
-          className=" w-[90em] h-[39.94em] object-cover w-180 "
+          className=" w-screen h-[84em] object-cover sm:h-full -z-20 absolute"
           src={bg}
           alt="logo"
         />
+    
+      <div className="">
+        <GPTSearchBar></GPTSearchBar>
       </div>
-      <GPTSearchBar></GPTSearchBar>
     </div>
   );
 };
