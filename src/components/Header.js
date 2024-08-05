@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import logo from "../assets/logo.png";
 import avatar from "../assets/avatar.png";
 import { signOut } from "firebase/auth";
@@ -9,6 +9,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import { toggleShowSearchView } from "../utils/gptSlice";
+import { addSearchMovieList } from "../utils/searchmovieSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -44,22 +45,37 @@ const Header = () => {
       }
     });
   }, []);
+  const searchItems = useSelector((store) => store.searchMovie.searchList);
+  const getStateOfSearch = useSelector((store) => store.gpt.showGPTSearch);
+  if (!getStateOfSearch && searchItems.length > 0) {
+    dispatch(addSearchMovieList([]));
+  }
   return (
     <div className="absolute w-full  px-8 py-5 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between">
       <img className="mx-auto md:ml-3 w-44" src={logo} alt="logo" />
       {getUser && (
         <div className="flex">
+          <div className="w-[7em]">
           <button
-            className="mt-[5%] mr-40 w-[25%] h-[2em] bg-purple-600 rounded-xl text-white"
+            className="mt-[5%] w-[60%] h-[2em] ml-[2.6em] bg-black  rounded-xl text-red-600 font-bold border border-red-500 hover:border-yellow-400"
             onClick={handleGPTsearchClick}
           >
-            {showGPT ? "home" : "search"}
+            {showGPT ? "Home" : "Search"}
           </button>
-          <img className="w-14 h-12 -mr-12 -mt-1 rounded-xl" src={avatar} />
-          <p className="relative text-yellow-300 mt-12 mr-7">{getUser}</p>
-          <button className=" text-red-600 mb-6 mr-2 " onClick={handleSignout}>
+          </div>
+          <div className="w-[7em]">
+          <img
+            className=" rounded-xl h-[55%] mb-1 ml-[2em]"
+            src={avatar}
+            alt="no internet"
+          />
+          <p className="text-yellow-300 pl-[2em]">{getUser}</p>
+          </div>
+          <div className="w-[6em]">
+          <button className="mb-6 mr-2 mt-[6%] w-[6em] h-[2em] bg-black  rounded-xl text-red-600 font-bold border border-red-500 hover:border-yellow-300" onClick={handleSignout}>
             Sign Out
           </button>
+          </div>
         </div>
       )}
     </div>

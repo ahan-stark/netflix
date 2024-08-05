@@ -92,20 +92,18 @@ const Login = () => {
   };
   return (
     <div className="">
-      <div className="absolute">
+      <div className="">
         <Header />
-        <img
-          className=" w-[90em] h-[37.45em] object-cover w-180"
-          src={bg}
-          alt="logo"
-        />
+        <div className="absolute min-h-screen">
+          <img className="min-h-screen object-cover" src={bg} alt="logo" />
+        </div>
       </div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           validateLogin();
         }}
-        className="w-full h-[94%] my-8 md:w-3/12 absolute p-12 bg-black mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80"
+        className="w-full  my-8 md:w-3/12 absolute p-12 bg-black mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80"
       >
         <h1 className="font-bold text-3xl py-4">
           {toggleSignIn ? "Sign In" : "Sign Up"}
