@@ -12,7 +12,7 @@ const VideoBg = (props) => {
     <div className="">
       <iframe
       className="w-[98.5vw] aspect-video wx-[99%]"
-        src={"https://www.youtube.com/embed/" + movieKey+"?&autoplay=1&mute=1&start=10"}
+        src={"https://www.youtube.com/embed/" + movieKey+"?&autoplay=1&mute=1&start=10&controls=0"}
         title="YouTube video player"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
